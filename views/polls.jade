@@ -1,0 +1,39 @@
+extends layout
+
+block content  
+  div.clearfix
+    div.pull-left
+      i.fa.fa-lg.fa-pie-chart
+      span Awesome Polls
+    div.pull-right
+      img(src="#{user.picture}", style="height:24px; border-radius: 30px;")  
+      strong(style="margin: 0px 10px;") #{user.nickname} 
+      a(href="/logout") Logout
+  br
+  div.jumbotron
+    h1.text-center 2016 Presidential Election
+  each poll, index in polls
+    if (poll.estimates.length > 0)
+      div.col-sm-4
+        div(class="panel panel-default", style="min-height: 150px;")
+          div.panel-title
+            div.panel-heading=poll.short_title
+          div(class="panel-body", style="min-height: 100px;")
+            ul.list-unstyled
+              each person, index in poll.estimates
+                li
+                  if index == 0
+                    p
+                      strong #{person.choice}
+                    div.progress
+                      div(class="progress-bar progress-bar-success", style="width: #{person.value}%", role="progressbar")
+                        span=person.value
+                  else
+                    p
+                      span #{person.choice}
+                    div.progress
+                      div(class="progress-bar progress-bar-info", style="width: #{person.value}%", role="progressbar")
+                        span=person.value
+          div.panel-footer
+            a.btn.btn-sm View Results  
+            a.btn.btn-sm.write-report Write Report
