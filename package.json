@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Awesome Polls",
   "author": "Auth0",
+  "scripts": {
+    "start": "node app"
+  },
   "dependencies": {
     "body-parser": "~1.13.2",
     "connect-ensure-login": "^0.1.1",
